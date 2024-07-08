@@ -1,0 +1,15 @@
+pip install semantic-kernel==1.1.2
+
+pip install python-dotenv
+python3 -m pip install --upgrade pip
+
+python3 -m pip install --upgrade semantic-kernel[all]
+pip install --upgrade semantic-kernel[all]
+# for hugging face cli add this to path
+/usr/local/python/3.10.13/bin
+
+# new order
+python3 -m pip install --upgrade pip
+pip install python-dotenv
+pip install semantic-kernel==1.1.2
+python3 -m pip install --upgrade semantic-kernel[all]
