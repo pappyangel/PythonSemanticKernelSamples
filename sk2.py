@@ -13,7 +13,7 @@ from semantic_kernel import Kernel
 #from semantic_kernel.connectors.ai.function_choice_behavior import FunctionChoiceBehavior
 from semantic_kernel.connectors.ai.open_ai import AzureChatCompletion
 from semantic_kernel.contents import ChatHistory
-from semantic_kernel.connectors.ai.open_ai import AzureChatPromptExecutionSettings, OpenAIChatPromptExecutionSettings
+from semantic_kernel.connectors.ai.open_ai import AzureChatPromptExecutionSettings
 from semantic_kernel.prompt_template import InputVariable, PromptTemplateConfig
 
 # loading variables from .env file
@@ -28,14 +28,14 @@ print(myKey)
 logging.basicConfig(level=logging.WARNING)
 
 kernel = Kernel()
-chat_service = AzureChatCompletion("myCC",myKey, myDeployment, myEndPoint)
+chat_service = AzureChatCompletion("myCC", myKey, myDeployment, myEndPoint)
 kernel.add_service(chat_service)
 
 prompt = """{{$input}}
 Summarize the content above.
 """
 
-# selectedService == Service.AzureOpenAI:
+
 execution_settings = AzureChatPromptExecutionSettings(
         # service_id= service_id,
         # ai_model_id="gpt-35-turbo",
@@ -49,8 +49,8 @@ prompt_template_config = PromptTemplateConfig(
     template_format="semantic-kernel",
     input_variables=[
         InputVariable(name="input", description="The user input", is_required=True),
-    ],
-    execution_settings=execution_settings,
+    ]
+     , execution_settings=execution_settings
 )
 
 summarize = kernel.add_function(

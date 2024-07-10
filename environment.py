@@ -1,5 +1,5 @@
 '''
-this explains the module to access environment variables
+test module to access environment variables
 '''
 # importing os module for environment variables
 import os

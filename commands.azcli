@@ -1,3 +1,19 @@
+# check python version
+py -3 --version
+python3 --version
+# set up an environment (command pallet create env and select interpreter)
+
+pip install --upgrade pip
+python3 -m pip install numpy
+
+pip install python-dotenv
+
+pip install semantic-kernel==1.1.2
+python3 -m pip install --upgrade semantic-kernel[all]
+
+
+
+# Old commands
 pip install semantic-kernel==1.1.2
 
 pip install python-dotenv

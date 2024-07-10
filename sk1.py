@@ -31,51 +31,51 @@ kernel = Kernel()
 chat_service = AzureChatCompletion("myCC",myKey, myDeployment, myEndPoint)
 kernel.add_service(chat_service)
 
-history = ChatHistory()
-history.add_user_message("Hi there, who are you?")
-history.add_assistant_message("I am Mosscap, a chat bot. I'm trying to figure out what people need.")
+# history = ChatHistory()
+# history.add_user_message("Hi there, who are you?")
+# history.add_assistant_message("I am Mosscap, a chat bot. I'm trying to figure out what people need.")
 
-async def chat() -> bool:
-    try:
-        user_input = input("User:> ")
-    except KeyboardInterrupt:
-        print("\n\nExiting chat...")
-        return False
-    except EOFError:
-        print("\n\nExiting chat...")
-        return False
+# async def chat() -> bool:
+#     try:
+#         user_input = input("User:> ")
+#     except KeyboardInterrupt:
+#         print("\n\nExiting chat...")
+#         return False
+#     except EOFError:
+#         print("\n\nExiting chat...")
+#         return False
 
-    if user_input == "exit":
-        print("\n\nExiting chat...")
-        return False
+#     if user_input == "exit":
+#         print("\n\nExiting chat...")
+#         return False
 
-    stream = True
-    if stream:
-        answer = kernel.invoke_stream(
-            chat_function,
-            user_input=user_input,
-            chat_history=history,
-        )
-        print("Mosscap:> ", end="")
-        async for message in answer:
-            print(str(message[0]), end="")
-        print("\n")
-        return True
-    answer = await kernel.invoke(
-        chat_function,
-        user_input=user_input,
-        chat_history=history,
-    )
-    print(f"Mosscap:> {answer}")
-    history.add_user_message(user_input)
-    history.add_assistant_message(str(answer))
-    return True
+#     stream = True
+#     if stream:
+#         answer = kernel.invoke_stream(
+#             chat_function,
+#             user_input=user_input,
+#             chat_history=history,
+#         )
+#         print("Mosscap:> ", end="")
+#         async for message in answer:
+#             print(str(message[0]), end="")
+#         print("\n")
+#         return True
+#     answer = await kernel.invoke(
+#         chat_function,
+#         user_input=user_input,
+#         chat_history=history,
+#     )
+#     print(f"Mosscap:> {answer}")
+#     history.add_user_message(user_input)
+#     history.add_assistant_message(str(answer))
+#     return True
 
 
 async def main() -> None:
     chatting = True
-    while chatting:
-        chatting = await chat()
+    # while chatting:
+    #     chatting = await chat()
 
 
 if __name__ == "__main__":
